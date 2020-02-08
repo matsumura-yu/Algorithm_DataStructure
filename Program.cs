@@ -6,10 +6,18 @@ namespace AlgoData
     {
         static void Main(string[] args)
         {
-            int[] A = {4, 3, 2, 10, 0};
+            // int[] A = {4, 3, 2, 10, 0};
+            int[] A = {2, 1};
+            // Trace(A);
+            // InsertionSort(A.Length,A);
+            // Trace(A);
+
+            Console.WriteLine("バブルソート");
             Trace(A);
-            InsertionSort(A.Length,A);
+            int result = 0;
+            result = BubbleSort(A.Length,A);
             Trace(A);
+            Console.WriteLine("転倒数:" + result);
 
         }
 
@@ -35,6 +43,27 @@ namespace AlgoData
                 }
                 A[j+1] = v;
             }
+        }
+
+        // バブルソート
+        // 与えられた数列をソートし、転倒数を返す
+        public static int BubbleSort(int N, int[] A){
+            int swapNum = 0;
+            int tmp = 0;
+            // N-1回で配列を確定させる
+            for(int i = 0; i < N-1; ++i){
+                for(int j = N - 2; j >= i; --j){
+                    // 転倒させる
+                    if(A[j] > A[j+1]){
+                        tmp = A[j];
+                        A[j] = A[j + 1];
+                        A[j + 1] = tmp;
+                        ++swapNum;
+                    }
+                }
+            }
+
+            return swapNum;
         }
     }
 }
