@@ -6,19 +6,26 @@ namespace AlgoData
     {
         static void Main(string[] args)
         {
-            // int[] A = {4, 3, 2, 10, 0};
-            int[] A = {2, 1};
+            int[] A = {4, 3, 2, 10, 0};
+            // int[] A = {2, 1};
             // Trace(A);
             // InsertionSort(A.Length,A);
             // Trace(A);
 
+            /*
             Console.WriteLine("バブルソート");
             Trace(A);
             int result = 0;
             result = BubbleSort(A.Length,A);
             Trace(A);
             Console.WriteLine("転倒数:" + result);
-
+            */
+            Console.WriteLine("選択ソート");
+            Trace(A);
+            int result = 0;
+            result = SelectionSort(A.Length, A);
+            Trace(A);
+            Console.WriteLine("交換数:" + result);
         }
 
         // 配列を全て1行で表示する
@@ -61,6 +68,25 @@ namespace AlgoData
                         ++swapNum;
                     }
                 }
+            }
+            return swapNum;
+        }
+        // 選択ソート
+        // 与えられた数列をソートし、交換回数を返す
+        public static int SelectionSort(int N, int[] A){
+            int swapNum = 0;
+            int minNum;
+            int tmp = 0;
+            for(int i=0; i < N; ++i){
+                minNum = i;
+                for(int j = i; j < N; ++j){
+                    if(A[j] < A[minNum]){
+                        minNum = j;
+                    }
+                }
+                tmp = A[i];
+                A[i] = A[minNum];
+                A[minNum] = tmp;
             }
 
             return swapNum;
